@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahzaib Ahmed — Android Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f6f7fb;
+  --ink:#12151c;
+  --muted:#5b6472;
+  --faint:#9aa1b0;
+  --line:#e7e9f0;
+  --blue:#2148c0;
+  --blue-deep:#16327f;
+  --teal:#0aa88f;
+  --coral:#ff6b4a;
+  --card:#ffffff;
+  --radius:16px;
+  --sans:'Inter', system-ui, sans-serif;
+  --display:'Sora', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--blue);color:#fff;}
+
+/* ---------- Nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:var(--display);font-weight:800;font-size:17px;
+  display:flex;align-items:center;gap:9px;
+}
+.logo-mark{
+  width:32px;height:32px;border-radius:9px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:13px;font-weight:800;
+}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{
+  font-size:14px;font-weight:500;color:var(--muted);
+  transition:color .15s ease;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{
+  font-size:13.5px;font-weight:600;color:#fff !important;
+  background:var(--ink);padding:9px 18px;border-radius:99px;
+  transition:background .15s ease;
+}
+.nav-cta:hover{background:var(--blue-deep);}
+.nav-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink);}
+
+/* ---------- Hero ---------- */
+.hero{
+  padding:100px 48px 90px;
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center;
+}
+.status-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;color:var(--teal);
+  background:rgba(10,168,143,0.08);border:1px solid rgba(10,168,143,0.25);
+  padding:6px 13px;border-radius:99px;margin-bottom:26px;
+}
+.status-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.hero h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(36px,5vw,54px);line-height:1.08;letter-spacing:-0.02em;
+  margin:0 0 18px;
+}
+.hero h1 .accent{color:var(--blue);}
+.hero-role{
+  font-size:19px;font-weight:600;color:var(--muted);margin:0 0 20px;
+}
+.hero-summary{font-size:16px;line-height:1.75;color:var(--muted);max-width:520px;margin:0 0 34px;}
+.hero-summary b{color:var(--ink);font-weight:600;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;}
+.btn{
+  font-size:14px;font-weight:600;padding:13px 24px;border-radius:99px;
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(22,50,127,0.25);}
+.btn-outline{border:1.5px solid var(--line);color:var(--ink);background:#fff;}
+.btn-outline:hover{border-color:var(--ink);transform:translateY(-2px);}
+
+/* hero visual */
+.hero-visual{position:relative;height:340px;}
+.blob{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg, var(--blue) 0%, var(--teal) 100%);
+  border-radius:38% 62% 58% 42% / 45% 40% 60% 55%;
+  opacity:0.9;
+}
+.hero-card{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:230px;background:#fff;border-radius:18px;
+  box-shadow:0 24px 60px rgba(18,21,28,0.16);
+  padding:20px;
+}
+.hero-card .stack-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);}
+.hero-card .stack-row:last-child{border-bottom:none;}
+.hero-card .stack-name{font-size:12.5px;font-weight:600;}
+.hero-card .stack-bar{width:56px;height:5px;border-radius:3px;background:var(--line);overflow:hidden;}
+.hero-card .stack-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));}
+
+/* ---------- section shell ---------- */
+section{padding:80px 48px;max-width:1100px;margin:0 auto;}
+.section-alt{background:var(--bg-alt);}
+.section-alt > .inner{max-width:1100px;margin:0 auto;padding:80px 48px;}
+.sec-eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-0.01em;margin:0 0 46px;}
+
+/* ---------- Skills ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+.skill-card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
+  transition:border-color .2s ease, transform .2s ease;
+}
+.skill-card:hover{border-color:var(--blue);transform:translateY(-3px);}
+.skill-card h4{font-family:var(--display);font-size:14.5px;font-weight:700;margin:0 0 12px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:12px;font-weight:500;color:var(--muted);background:var(--bg-alt);border:1px solid var(--line);padding:5px 11px;border-radius:99px;}
+
+/* ---------- Experience timeline ---------- */
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
+.tl-item{position:relative;padding-bottom:46px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-32px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 2px var(--line);}
+.tl-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-bottom:4px;}
+.tl-role{font-family:var(--display);font-weight:700;font-size:17px;}
+.tl-date{font-family:var(--mono);font-size:12px;color:var(--teal);white-space:nowrap;}
+.tl-org{font-size:13.5px;color:var(--muted);margin-bottom:14px;font-weight:500;}
+.tl-list{margin:0;padding-left:20px;color:var(--muted);font-size:14.5px;line-height:1.75;}
+.tl-list li{margin-bottom:6px;}
+
+/* ---------- Projects ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+.proj-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;display:flex;flex-direction:column;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(18,21,28,0.08);}
+.proj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.proj-name{font-family:var(--display);font-weight:700;font-size:18px;}
+.proj-link{
+  width:32px;height:32px;border-radius:50%;background:var(--bg-alt);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+  transition:background .15s ease;
+}
+.proj-link:hover{background:var(--ink);color:#fff;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.proj-stack .tag{font-size:11px;padding:4px 9px;}
+.proj-desc{font-size:14px;line-height:1.7;color:var(--muted);margin:0;flex-grow:1;}
+.proj-desc b{color:var(--ink);font-weight:600;}
+
+/* ---------- Education ---------- */
+.edu-card{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 32px;
+}
+.edu-deg{font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:6px;}
+.edu-school{color:var(--muted);font-size:14px;}
+.edu-grad{
+  font-family:var(--mono);font-size:12.5px;color:var(--blue);
+  background:rgba(33,72,192,0.08);padding:8px 14px;border-radius:99px;
+}
+
+/* ---------- Contact ---------- */
+.contact-band{
+  background:linear-gradient(135deg,var(--blue) 0%, var(--blue-deep) 55%, var(--teal) 100%);
+  border-radius:28px;padding:64px 48px;text-align:center;color:#fff;
+  margin:0 48px 90px;position:relative;overflow:hidden;
+}
+.contact-band h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);margin:0 0 14px;}
+.contact-band p{font-size:15.5px;color:rgba(255,255,255,0.85);max-width:460px;margin:0 auto 32px;}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+.contact-links a{
+  font-size:14px;font-weight:600;padding:12px 22px;border-radius:99px;
+  background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.3);
+  transition:background .15s ease, transform .15s ease;
+}
+.contact-links a:hover{background:#fff;color:var(--blue-deep);transform:translateY(-2px);}
+
+footer{text-align:center;padding:0 48px 50px;font-size:13px;color:var(--faint);}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;} .reveal{opacity:1;transform:none;}}
+
+/* ---------- mobile ---------- */
+@media (max-width:880px){
+  nav{padding:16px 22px;}
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:#fff;flex-direction:column;padding:18px 22px;border-bottom:1px solid var(--line);display:none;gap:18px;align-items:flex-start;}
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:block;}
+  .hero{grid-template-columns:1fr;padding:56px 22px 60px;gap:40px;}
+  .hero-visual{height:240px;order:-1;}
+  section{padding:56px 22px;}
+  .section-alt > .inner{padding:56px 22px;}
+  .contact-band{margin:0 22px 60px;padding:48px 26px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><div class="logo-mark">SA</div> Shahzaib Ahmed</div>
+  <button class="nav-toggle" id="navToggle">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="status-badge"><span class="dot"></span> Available for internships &amp; roles</div>
+    <h1>Building native Android<br>experiences with <span class="accent">Kotlin</span>.</h1>
+    <p class="hero-role">Android Developer — Kotlin · Android Studio · Firebase</p>
+    <p class="hero-summary">
+      Android Developer with hands-on experience building mobile applications in Kotlin and Android Studio.
+      Currently interning at <b>Syntecx</b>, working across APIs, Firebase, authentication and local databases —
+      with apps spanning <b>API integration, video streaming, and AI chatbot functionality</b>.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:shahzaibahmed6478@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="#projects" class="btn btn-outline">See my work</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blob"></div>
+    <div class="hero-card">
+      <div class="stack-row"><span class="stack-name">Kotlin</span><div class="stack-bar"><span style="width:92%"></span></div></div>
+      <div class="stack-row"><span class="stack-name">Firebase</span><div class="stack-bar"><span style="width:80%"></span></div></div>
+      <div class="stack-row"><span class="stack-name">REST APIs</span><div class="stack-bar"><span style="width:85%"></span></div></div>
+      <div class="stack-row"><span class="stack-name">Room DB</span><div class="stack-bar"><span style="width:75%"></span></div></div>
+      <div class="stack-row"><span class="stack-name">Java</span><div class="stack-bar"><span style="width:70%"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="sec-eyebrow">Toolkit</div>
+    <h2 class="sec-title">Skills</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <h4>Languages</h4>
+      <div class="skill-tags"><span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>Android Development</h4>
+      <div class="skill-tags"><span class="tag">Android Studio</span><span class="tag">Android SDK</span><span class="tag">Room Database</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>Backend &amp; Cloud</h4>
+      <div class="skill-tags"><span class="tag">Firebase</span><span class="tag">JSONBin.io</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>APIs &amp; Data</h4>
+      <div class="skill-tags"><span class="tag">REST APIs</span><span class="tag">JSON</span><span class="tag">YouTube Data API</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>Web Technologies</h4>
+      <div class="skill-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>Core Concepts</h4>
+      <div class="skill-tags"><span class="tag">OOP</span><span class="tag">Data Structures</span><span class="tag">DB Fundamentals</span><span class="tag">API Integration</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>Tools</h4>
+      <div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Android Studio</span><span class="tag">VS Code</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<div class="section-alt">
+<div class="inner">
+  <div class="reveal">
+    <div class="sec-eyebrow">Career</div>
+    <h2 class="sec-title">Experience</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-head"><div class="tl-role">Android Development Intern (Onsite)</div><div class="tl-date">Jul 2026 — Present</div></div>
+      <div class="tl-org">Syntecx · Islamabad, Pakistan</div>
+      <ul class="tl-list">
+        <li>Developing Android applications using Kotlin and Android Studio with hands-on real-world experience</li>
+        <li>Working with Firebase for app services and authentication, plus JSON-based data handling and API integration</li>
+        <li>Building apps that fetch external data through APIs and manage local storage using Room Database</li>
+        <li>Currently building mobile apps involving social content, video streaming and AI-based chatbot functionality</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--teal);"></div>
+      <div class="tl-head"><div class="tl-role">Web Development Trainee</div><div class="tl-date">Feb 2026 — Apr 2026</div></div>
+      <div class="tl-org">NAVTTC · Islamabad, Pakistan</div>
+      <ul class="tl-list">
+        <li>Completed three months of web development training covering HTML, CSS, JavaScript and PHP</li>
+        <li>Built an understanding of frontend development and basic server-side programming concepts</li>
+        <li>Practiced building web pages and implementing interactive functionality</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <div class="sec-eyebrow">Selected Work</div>
+    <h2 class="sec-title">Projects</h2>
+  </div>
+  <div class="proj-grid reveal">
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-name">TweetHub</div>
+        <a href="https://github.com/shahzaibx47/TweetHub" target="_blank" rel="noopener" class="proj-link">↗</a>
+      </div>
+      <div class="proj-stack"><span class="tag">Kotlin</span><span class="tag">Firebase</span><span class="tag">REST APIs</span></div>
+      <p class="proj-desc">Android app with <b>user authentication</b> and a personalized dashboard. Integrates external APIs to fetch and display tweets dynamically, with full JSON-based response handling for remote content.</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-name">VideoHub</div>
+        <a href="https://github.com/shahzaibx47/VideoHub" target="_blank" rel="noopener" class="proj-link">↗</a>
+      </div>
+      <div class="proj-stack"><span class="tag">Kotlin</span><span class="tag">Room DB</span><span class="tag">YouTube API</span></div>
+      <p class="proj-desc">Video app that retrieves content via the <b>YouTube API</b> and caches it locally with Room Database. In development: authentication, video listing and in-app streaming.</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-name">ThinkNest AI</div>
+        <a href="https://github.com/shahzaibx47/ThinkNestAI" target="_blank" rel="noopener" class="proj-link">↗</a>
+      </div>
+      <div class="proj-stack"><span class="tag">Kotlin</span><span class="tag">Gemini API</span></div>
+      <p class="proj-desc">AI chatbot app for Android built on the <b>Gemini API</b>, with a simple, focused conversational interface for natural back-and-forth interaction.</p>
+    </div>
+    <div class="proj-card">
+      <div class="proj-head">
+        <div class="proj-name">Quotes App</div>
+        <a href="https://github.com/shahzaibx47/QuotesApp" target="_blank" rel="noopener" class="proj-link">↗</a>
+      </div>
+      <div class="proj-stack"><span class="tag">Kotlin</span><span class="tag">JSON</span></div>
+      <p class="proj-desc">Lightweight app that reads and parses quotes from a local <b>JSON</b> file, displaying structured content cleanly within a native Android interface.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <div class="sec-eyebrow">Background</div>
+    <h2 class="sec-title">Education</h2>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <div class="edu-deg">Bachelor of Science in Computer Science (BSCS)</div>
+      <div class="edu-school">Federal Urdu University, Islamabad</div>
+    </div>
+    <div class="edu-grad">Expected Graduation: 2028</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-band reveal">
+  <h2>Let's build something together.</h2>
+  <p>Open to Android development internships, junior roles, and collaborative projects.</p>
+  <div class="contact-links">
+    <a href="mailto:shahzaibahmed6478@gmail.com">shahzaibahmed6478@gmail.com</a>
+    <a href="tel:+923197512647">+92 319 7512647</a>
+    <a href="https://github.com/shahzaibx47" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</div>
+
+<footer>© 2026 Shahzaib Ahmed · Islamabad, Pakistan</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} });
+},{threshold:0.12});
+reveals.forEach(r=>ro.observe(r));
+</script>
+</body>
+</html>
